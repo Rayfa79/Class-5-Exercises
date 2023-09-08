@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+//Exercise #1
+function outerFunction() {
+	let outerVar = "I'm outside!";
+
+    //child function
+	function innerFunction() {
+		let innerVar = "I'm inside!";
+		console.log(outerVar); // Can we access outerVar? YES
+		console.log(innerVar); // Can we access innerVar? YES
+	}
+
+	innerFunction(); //child function has closure over parent variables
+}
+
+outerFunction();
+        
+
+ //Exercise #2
+ function mainFunction() {
+	// Call the hoistedFunction here
+    
+     secondFunction();
+     function secondFunction() {
+        console.log('Hello')
+     }
+	// Now, declare the hoisted Function below
+}
+
+mainFunction();
+
+//Exercise #3
+/*
+Develop a JavaScript function that returns another function.
+The inner function should have access to variables from the outer function's scope
+*/
+
+function parentFunction() {
+    let fruit = "apples";
+    let meat = "ham";
+
+    function babyFunction() {
+        let desert = "cake";
+        console.log(fruit);
+        console.log(desert);
+        
+    }
+     //babyFunction();
+     return babyFunction;
+}
+
+let padreFunction = parentFunction();
+padreFunction()
+
+//Exercise #4
+/*
+nstructions:
+
+Declare a global variable outside of any function.
+Create a function that tries to modify that global variable.
+Create another function that declares a local variable with the same name.
+Observe the behavior when calling both functions.
+*/
+// Declare a global variable here
+let favoriteColor = "black";
+function modifyGlobal() {
+    // Try to modify the global variable here
+    favoriteColor = "yellow";
+    console.log(favoriteColor);
+}
+
+function localScopeTest() {
+    // Declare a local variable with the same name as the global variable
+    let favoriteColor = "white";
+    console.log(favoriteColor);
+}
+
+modifyGlobal();
+localScopeTest();
+
+// Call both functions here
+
+//Exercise #5
+/*
+    Design a function that accepts a parameter.
+    The function should return another function that uses the parameter in some way.
+*/
+
+function functionFactory(param) {
+    // Return a function that makes use of 'param'
+    let addition = 5 + param;
+    console.log(addition);
+    
+
+    function addmore(param) {
+         addition += 2;
+         console.log(addition);
+        
+    }
+    return addmore()
+   
+   
+}
+let result = functionFactory(5);
+
+//Exercise #6
+/*
+    Declare a variable after a console.log statement that tries to print that variable. Observe the behavior, and deduce how JavaScript hoists variable declarations.
+*/
+
+function hoistingTest() {
+    console.log(cats)
+    let cats = 2;
+    
+    // Try printing a variable here
+
+    // Declare the variable after the console.log
+    //What I deduce: Variables must be declared and initialized before a console.log
+}
+
+//hoistingTest();
+
+//Exercise #7
+/*
+Instructions:
+
+Create a function that sets up a counter using closures.
+The outer function should define a count variable.
+The inner function should increment and print the count each time it's invoked.
+*/
+
+function counter() {
+    let count = 5;
+    console.log(`The parent count is: ${count}`)
+
+     function increment() {
+        count++ ;
+        console.log(`The child count is: ${count}`)
+        
+    }
+    return increment
+    
+    
+    
+}
+const myCounter = counter();
+myCounter()
+myCounter()
+
+/*
+Exercise #8
+Objective: Grasp the intricacies of Scope, Hoisting, and Closures combined.
+
+Instructions:
+
+Create a function that initializes a counter variable. This function should return another function.
+The returned function, when invoked, should increment the counter and print its value. However, if the counter reaches a certain value (e.g., 10), it should reset itself.
+Notice how hoisting affects the behavior when you try to declare and initialize the counter after referencing it.
+Comment on the role of closure in maintaining the counter's state across multiple invocations of the returned function.
+*/
+
+function newCounter() {
+    let counter = 8;
+    console.log(`The parent count is: ${counter}`)
+
+    function incrementMore() {
+        if(counter > 10) {
+            counter = 0;
+            console.log(`The count is: ${counter}`)
+        }else {
+            counter++;
+            console.log(`The count is: ${counter}`)
+        }
+        
+    }
+    return incrementMore
+}
+
+let myResults = newCounter()
+myResults();
+myResults();
+myResults();
+
+/*
+Exercise #9
+Objective: Deepen the understanding of Scope interplay with Closures and Hoisting.
+
+Instructions:
+
+Define two functions: one that modifies a global variable and another that tries to modify a local variable (which is not yet declared).
+
+Inside the second function, declare and initialize the local variable after attempting to modify it. Observe how hoisting comes into play.
+
+Now, make use of closures: Modify the first function so that it becomes a factory function returning another function. This inner function should use the outer function's variables.
+
+Reflect on how the local scope of the outer function is preserved for the inner function through closures, even after the outer function has finished execution
+*/
+let myGlobal = "pizza"
+function firstFunction() {
+    myGlobal = "hamburgers";
+    console.log(myGlobal);
+}
+firstFunction()
+
+function secondFunction() {
+    myLocal = "ice cream";
+    console.log(myLocal);
+
+}
+secondFunction()
+
+function firstFunctionFactory() {
+    let drink = "Gin Rickey";
+    console.log(drink);
+
+    function secondFunctionFactory() {
+        let localDrink = "Cosmo";
+        console.log(localDrink)
+        let drinkMenu = `The only drinks on my menu are ${drink} and  ${localDrink}, sorry!`;
+        console.log(drinkMenu);   
+    }
+    secondFunctionFactory()
+    return secondFunctionFactory
+}
+
+let factories = firstFunctionFactory();
+firstFunctionFactory()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
