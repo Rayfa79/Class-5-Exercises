@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        //Create an expresso machine class that makes machines with 4 properties and 3 methods
+        
+        //Create an animal class and extend it to several different animal subclasses. Add diffrent properties and methods to the subclasses
+
+        class Animal{
+            constructor(name){
+                this.name = name
+            }
+            speak() {
+                console.log(`${this.name} makes a sound`)
+            }
+        }
+        class Cat extends Animal{
+            constructor(name,color,breed){
+                super(name)
+                this.color = color
+                this.breed = breed
+            }
+            jumps() {
+                console.log("jump two times")
+            }
+        }
+        class Kitten extends Cat{
+            constructor(name,color,breed,sex){
+                super(name,color,breed)
+                this.sex = sex
+            }
+            isBad() {
+                console.log(`The ${Cat.name} is bad!`)
+            }
+        }
+
+        let babyCat = new Kitten("Norman","orange and white","shorthair","male")
+        console.log(babyCat)
+        babyCat.isBad()
+        babyCat.jumps()
+
+        //Come up with a parent class
+        //extend that class to two children
+        //Use encapsulation, abstraction, inheritance, and polymorphism
+
+        class Laptops{
+            constructor(brand) {
+                this._brand = brand
+                }
+                get brand() {
+                    return this._brand
+                }
+                welcomeSound() {
+                    console.log(`Welcome to ${this._brand}`)
+                }
+                overheat() {
+                    console.log('yes, this computer overheats')
+                }
+
+            }
+            class Tablets extends Laptops{
+                constructor(brand,edition) {
+                super(brand)
+                this._edition = edition
+                }
+                get edition() {
+                    return this._edition
+                }
+                music() {
+                    console.log(`la la la`)
+                }
+            }
+            class Phones extends Laptops{
+                constructor(brand,edition,bands) {
+                    super(brand,edition)
+                    this._bands = bands
+                }
+                get bands() {
+                    this._bands
+                }
+            }
+
+            let LaptopOne = new Laptops("Apple");
+            let appleTablet = new Tablets("Apple","3rd",6);
+            let applePhone = new Phones("Samsung","2nd",6);
+
+           console.log(appleTablet)
+
+           let array = [LaptopOne,appleTablet,applePhone]
+           console.log(array)
+
+           function getMethod(array) {
+             for(let item of array) {
+                item.welcomeSound()
+             }
+           }
+           getMethod(array)
+        
+
+        
+     
+    </script>
+    
+</body>
+</html>
