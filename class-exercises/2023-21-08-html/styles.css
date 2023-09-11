@@ -1,0 +1,68 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    font-size: 1rem;
+   
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    background-color: blue;
+    padding: 3em;
+    
+}
+
+main {
+    width: 90%;
+    margin: 0 auto;
+    
+}
+
+h1 {
+
+    text-align: center;
+    padding: 1em;
+
+}
+
+p {
+    text-align: center;
+    font-size: 1em;
+
+
+}
+
+.nav-list {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+nav a {
+    color: black;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+nav a:hover,
+nav a:focus {
+    color: white;
+}
+
+form {
+    margin: 2em;
+}
+

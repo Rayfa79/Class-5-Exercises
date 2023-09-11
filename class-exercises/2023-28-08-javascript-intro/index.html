@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <ul></ul>
+    </div>
+    <script>
+       //Exercises
+/* Exercise 1
+Instructions: Write a JavaScript program that displays "Hello, World!" on the console. */
+let helloWorld = (hello) => {console.log(hello)};
+helloWorld("Hello World")
+
+
+/* Exercise 2
+Instructions: Declare a variable named name and assign it your name as a string. Display the value of the name variable on the console. */
+
+const name = "Raina";
+console.log(name);
+
+/* Exercise 3
+Instructions: Write a JavaScript program that calculates and displays the area of a rectangle. Use variables length and width to store the dimensions of the rectangle. */
+
+function calculateArea(length, width) {
+    const area = length * width;
+    return area;
+}
+console.log(calculateArea(10,13))
+
+//forgot variable for length and width
+/* let inputRectangleData = ()=> {
+    let lengthInput = Number(prompt('Enter the rectangle length'));
+    let widthInput = Number(prompt('Enter the rectangel width'));
+    const area = lengthInput * widthInput;
+    return area
+}
+
+console.log(inputRectangleData()) */
+
+/* Exercise 4
+Instructions: Write a JavaScript program that checks if a number is even or odd. Display a message on the console indicating whether the number is even or odd. */
+
+function isEven(num) {
+    let message = num % 2 === 0 ? console.log(`The number ${num} is even.`)
+                  : console.log(`The number ${num} is odd.`)
+    return message
+}
+
+isEven(12)
+
+/* Exercise 5
+Instructions: Write a JavaScript program that displays the numbers from 1 to 10 on the console using a for loop. */
+
+let loop = ()=> {
+    for (let i = 1; i <= 100; i++) {
+       console.log(i)
+    }
+}
+loop()
+
+/* Exercise 6
+Instructions: Write a JavaScript program that prompts the user for their name and displays a personalized greeting message on the console. */
+//const inputValue = prompt("Please enter your name", "Raina")
+let inputName = (name)=> {
+   console.log(`Welcome to the website ${name}`) 
+}
+//inputName(inputValue)
+
+/* Starter Code
+const name = prompt("Enter your name: "); */
+
+/* Exercise 7
+Instructions: Write a JavaScript program that calculates and displays the factorial of a number. Prompt the user for a number and display its factorial on the console. */
+
+
+/* Exercise 8
+Instructions: Write a JavaScript program that determines if a given year is a leap year. Prompt the user for a year and display a message on the console indicating whether it is a leap year or not. */
+
+/* Exercise 9
+Instructions: Write a JavaScript program that calculates and displays the sum of all numbers from 1 to 100 using a while loop. */
+function sumWhile() {
+
+  let sum = 0;
+  let i = 1;
+
+  while (i <= 100) {
+    sum += i;
+    i++;
+ }
+ return sum
+}
+let total = sumWhile();
+console.log(`The sum of the numbers 1 -100 is ${total}`)
+
+
+
+/* Exercise 10
+Instructions: Write a JavaScript program that prompts the user for two numbers and performs the four basic arithmetic operations (addition, subtraction, multiplication, division) on those numbers. Display the results on the console. */
+
+/* const fourOperations = ()=> {
+
+    //grab user input values/convert to numbers
+    //const num1 = parseInt(prompt('Please enter a number'))
+    //const num2 = parseInt(prompt('Please enter a secont number')); 
+
+    //do calculations
+    let sum = num1 + num2;
+    let diff = num1 - num2;
+    let product = num1 * num2;
+    let quotient = (num1 / num2)
+
+    //display results
+    console.log(`Here are your results: \n sum: ${sum} \n difference: ${diff} \n product: ${product} \n quotient: ${quotient}`);
+}
+
+fourOperations() */
+
+
+
+
+
+
+
+
+
+/* Exercise #11: Basic
+Aim: Create a variable for every JavaScript Data Type
+
+[ ] Create a variable that holds a string value
+[ ] Create a variable that holds a number value
+[ ] Create a variable that holds a boolean value
+[ ] Create a variable that holds a null value
+[ ] Create a variable that holds an undefined value
+[ ] Create a variable that points to an object instance
+[ ] Create a variable that points to an array instance
+[ ] Create a variable that has no default value declaration */
+
+const string = " This is my string";
+const number = 10;
+const isHot = true;
+const empty = null;
+const notDefined = undefined;
+const student = {
+    name: null,
+    age: 44,
+    grade: "post graduate",
+    graduated: "no"
+}
+const favoriteFoods = ["pizza", "hotdogs", "grits"]
+let grades;
+
+
+
+/*Exercise #12: Intermediate
+Aim: Dynamically display a list of food items and prices using HTML & JavaScript
+
+[ ] Create a LIST of OBJECTS, each object having a name and price property
+[ ] LOOP over that LIST, dynamically create a new list item <li></li> with the food name inside, and append that item to an existing HTML <ul></ul> element*/
+let ul = document.querySelector('ul')
+
+const foodsList = [
+    {
+       name: "pizza",
+       price: 12.99 
+    },
+    {
+       name: "fried chicken",
+       price: 3.99  
+    },
+    {
+        name: "peach cobbler",
+        price: 2.99
+    }
+]
+function getFoodsHtml(foods) {
+    for(let food of foods) {
+        //create child
+        let li = document.createElement("li");
+        //add content
+        li.innerText += `${food.name}`;
+        //append to ul
+        ul.appendChild(li);
+    }
+    console.log(foods)
+}
+getFoodsHtml(foodsList)
+
+/* Exercise #13: Advanced
+Aim: Create a function that takes two numbers as arguments (num, length) and returns an array of multiples of num until the array length reaches length.
+
+Examples
+
+arrayOfMultiples(7, 5)    ➞    [7, 14, 21, 28, 35]
+
+arrayOfMultiples(12, 10)    ➞    [12, 24, 36, 48, 60, 72, 84, 96, 108, 120]
+
+arrayOfMultiples(17, 6)    ➞    [17, 34, 51, 68, 85, 102]
+Notes
+Notice that num included in the returned array. */
+
+const multiples = (num, length) => {
+
+const result = [];
+
+for(let i = 0; i < result.length < length; i++) {
+   result.push(num * i)
+}
+
+return result;
+
+}
+
+const nums = multiples(3, 5);
+
+console.log(nums); 
+
+
+/* Exercise #14: Intermediate
+Objective: Implement conditional statements for decision-making
+
+Instructions: Write a JavaScript program that determines whether a number is positive, negative, or zero. Display a message on the console indicating the type of the number.*/
+
+function isPositiveNegativeZero(num) {
+    if(num > 0) {
+        return `The number ${num} is positive.`;
+    }else if (num < 0) {
+        return `The number ${num}: is negative`;
+    }else {
+        return `Your number is zero`;
+    }
+    
+}
+
+const result = isPositiveNegativeZero(9);
+console.log(result)
+console.log(hello);
+
+
+
+/* 
+Exercise #15: Intermediate
+Objective: Control program flow using loops
+
+Instructions: Write a JavaScript program that displays the multiplication table of a number up to 10 using a for loop.
+
+let multTable(num) {
+    let array = []
+    for(let i = 1; i < 11 ; i++) {
+        array.push(num * num)
+    }
+    return
+}
+
+let total = multTable(3);
+console.log(total)
+
+Exercise #16: Advanced
+*Aim: Create a function that checks if a given number is prime.
+
+Examples
+
+isPrime(2)    ➞    true
+
+isPrime(15)    ➞    false
+
+isPrime(13)    ➞    true */  
+    </script>
+</body>
+</html>

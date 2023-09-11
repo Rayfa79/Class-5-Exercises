@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   
+    <button type="submit">Click Here</button>
+    
+    </style>
+    <script>
+        //Class 4 Exercises
+
+/*         Exercises
+Exercise 1
+Instructions: Write a JavaScript function called greet that takes a name as an argument and returns a greeting message. For example, if the name is "John", the function should return "Hello, John!". */
+const greet = (name) => {console.log(`Hello, ${name}`)};
+greet("Raina");
+
+/* Exercise 2
+Instructions: Write a JavaScript function called multiply that takes two numbers as arguments and returns their product. Test the function with different inputs. */
+const multiply = (num1, num2)=> {console.log(num1 * num2)}; 
+multiply(4,5)
+
+/* Exercise 3
+Instructions: Create a JavaScript object called person with properties for name, age, and gender. Assign appropriate values to the properties and display the object on the console. */
+const person = {
+    name: "Raina",
+    age: 44,
+    gender: "female"
+}
+console.log(person)
+
+/* Exercise 4
+Instructions: Create a JavaScript object called car with properties for make, model, and year. Assign appropriate values to the properties and display the object on the console. */
+
+const car = {
+    make: "BMW",
+    model: "X-7",
+    year: 2022
+}
+
+console.log(car)
+
+/* Exercise 5
+Instructions: Write a JavaScript function called reverseString that takes a string as an argument and returns the reverse of the string. For example, if the input is "Hello", the function should return "olleH". */
+const reverseString = (string)=> {
+    let splitString = string.split("")
+    console.log(splitString);
+    let reverseArray = splitString.reverse();
+    let joinString = reverseArray.join("");
+    console.log(joinString)
+}
+reverseString("Raina")
+
+/* Exercise 6
+Instructions: Write a JavaScript function called calculateArea that takes the radius of a circle as an argument and returns the area of the circle. Use the formula A = π * r^2. */
+
+function calculateArea(radius) {
+    const area = Math.PI * radius * radius;
+    console.log(area)
+    console.log(Math.round(area))
+}
+calculateArea(7)
+/* Exercise 7
+Use the Date object to display the current date and time on the console
+*/
+
+function getDate() {
+    const currentDate = new Date();
+    console.log(currentDate);
+
+    let day = currentDate.getDate() < 10 ? '0' + currentDate.getDate() : currentDate.getDate();
+
+    let month = currentDate.getMonth()+1 < 10 ? '0' + currentDate.getMonth() : currentDate.getMonth();
+
+    const year = currentDate.getFullYear();
+   
+    
+    const dateString = ` ${month}/${day}/${year}`;
+    console.log(dateString)
+}
+
+getDate()
+
+//Exercise 8
+//Use Math.Object to generate a random number between 1 and 10 and display it o the console.
+
+let randomNumber = ()=> {
+    return Math.floor(Math.random()*10)+1
+}
+/* console.log(randomNumber()) */
+
+//Exercise 10
+//Create a function that takes in an argument and uses string interpolation to print that arguments value somewhere in a text string
+
+function PrintArgument(coffee) {
+    return `I love drinking Dunkin Donuts ${coffee} every morning!`;
+}
+
+/* console.log(PrintArgument("Carmel Machiatto")) */
+
+//Exercise #11
+/*
+Aim: Create an application that, on button click, runs a function that prints out a users name, age, and occupation
+
+[ ] Create the HTML with a button
+[ ] Create a function that takes in a user object
+[ ] Print each item in the user object out in a string to the console
+*/
+
+const user = {
+    name: "Raina",
+    age:44,
+    occupation: "Software Developer"
+}
+
+/* let userData = ({name,age,occupation} )=> {
+    console.log(`${name} is ${age} years old and a junior ${occupation}.`)
+}
+userData(user) */
+
+//Without destructuring nor template literal
+
+let noDestructuring = (userObj) => {
+   /* console.log(userObj.name +  " is " + userObj.age + " years old and a " + userObj.occupation) */
+}
+
+noDestructuring(user)
+
+/* Exercise 12
+Aim: Create a function that takes an object and returns the keys and values as separate arrays. Return the keys sorted alphabetically and their corresponding values in the same order.*/
+
+const arrayThree = {
+    a: "Microsoft",
+    b: "Apple",
+    c: "Google"
+}
+//function that returns key array and value array:
+
+let newArray = (array)=> {
+    let arrayOne = Object.keys(array);
+    let arrayTwo = Object.values(array).sort();
+    const nestedArray = [arrayOne, arrayTwo]
+    return nestedArray
+}
+
+//console.log(newArray(arrayThree)) 
+
+/*
+Exercise 13
+Given an input string, reverse the string word by word. Define a function that does this.
+*/
+
+function reverse(string) {
+    const catString = string.split(" ").reverse().join(" ")
+    console.log(catString)
+}
+//reverse('The cat stinks')
+
+/* Exercise 14
+Objective Balanced Parentheses
+
+Given a string containing just the characters '(', ')', ', ', '[' and ']', determine if the input string is valid (i.e., has balanced parentheses). Write a function that determines this. */
+
+let string = " '(', ')', ', ', '[' and ']' "
+
+function isBalanced(string) {
+    const stack = [];
+    //iterate the string. Push opening parenthesis and brackets to stack.
+    for(let char of string) {
+        if(char === '(' || char === '[') {
+            stack.push(char);
+            console.log(stack);
+    //check to see if there are closing matches in the string! if there are delete the opening matches from the stack!!
+        }else if (char === ')' || char === ']') {
+            stack.pop(char)
+            console.log(stack)
+        }//conditional end
+    //check if the stack is zero. If it is then the parenthesis are balanced!
+        if(stack.length === 0) {
+            console.log('The input is valid(parenthesis are balanced!)')
+        }else {
+            console.log('Nope the input is invalid("The parenthesis are not balanced!")')
+        }
+    }//loop end
+}
+
+isBalanced(string)
+
+/* Exercise 15
+Objective Anagram
+anagram:a word, phrase, or name formed by rearranging the letters of another, such as cinema, formed from iceman. 
+
+Write a function that checks whether two given words are anagrams of each other. */
+
+//create two strings
+//add both strings to an array via spread
+//traverse the array 
+//use conditional to see if word at index 0 characters are included in word at index 1
+const input1 = "Cinema"
+const input2 = " ice Man"
+function isAnagram(word1,word2) {
+    //remove spaces & make each word lowercase
+     word1 = word1.trim().replace(/ /g, '').toLowerCase();
+     word2= word2.trim().replace(/ /g, "").toLowerCase();
+
+     //turn each string into an array,sort alphabetically, and turn back into string
+     const sortArray = word1.split("").sort().join("");
+     const sortArray2= word2.split("").sort().join("")
+    //use a conditional that compares each word
+    if(sortArray === sortArray2) {
+        console.log('yes, its an anagram!')
+    }else {
+        console.log('nope, Its not an anagram!')
+    }
+}
+
+    isAnagram(input1,input2)
+ /*    Exercise 16
+Objective Fizzbuzz
+
+Write a function that prints the numbers from 1 to 100. But for multiples of three, instead of the number, print "Fizz"; for the multiples of five, print "Buzz". For numbers which are multiples of both three and five, print "FizzBuzz". */
+
+function fizz() {
+    for(let i= 0; i< 101; i++) {
+        if( i % 3 === 0) {
+            console.log( "fizz")  
+        }else if(i % 5 === 0) {
+            console.log("buzz")
+        }else if ( i % 3 === 0 && i % 5 === 0) {
+            console.log("fizzbuzz")
+                
+        }else {
+                console.log(i)
+            }
+            
+        }
+    }// end of loop  
+
+fizz()
+
+
+
+
+ /*    Exercise 17
+Objective Palindrome
+
+. */
+const word5 = " so pe"
+function palidrome(string8) {
+    //get rid of spaces, punctuation, and case
+     string8 = string8.replace(/ /g,"").toLowerCase()
+    //Create a new variable that turns word into array, reverses the word then turns back into string
+    const backwardString = string8.split("").reverse().join("");
+   //compare string8 with backward string.
+   if(string8 === backwardString) {
+    console.log("Its a palidrone!")
+   }else {
+    console.log("its NOT a palidrone!")
+   }
+    
+    
+}
+palidrome(word5)
+
+
+/* Exercise 18
+Use String.prototype.split() and other String methods to reverse the words in a sentence.   */
+const wordsFive = "McDonalds"
+let methods = (string)=> {
+    const newString = string.split("").reverse().join("");
+    console.log(newString)
+}
+methods(wordsFive)
+     
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+ </body>
+</html>
