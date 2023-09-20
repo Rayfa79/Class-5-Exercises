@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <style>
+    .myDiv {
+        padding: 10px;
+        margin: 0 auto;
+    }
+   button {
+    margin-bottom: 5px;
+   }
+    </style>
+</head>
+<body>
+    <!--Exercise 1 -->
+    <div id="myDiv">This is a div</div>
+    <p>First paragraph.</p>
+    <p>Second paragraph.</p>
+
+    <div class="jumbotron">
+        <button class="btn btn-inline btn-primary btn_onclick" onclick="changeBackground()">Button 1</button>
+        <button class="btn btn-inline btn-primary btn_onclick">Button 2</button>
+        <button class="btn btn-inline btn-primary btn_onclick">Button 3</button>
+    </div>
+
+    <div class="addButton ">
+
+    </div>
+
+    <!--Exercise 5-->
+    <label for="textInput">Favorite Food:</label>
+    <input type="text" id="textInput" name ="textInput" class="form-control" placeholder="What are your two favorite foods?" />
+    <div class="divThree"><!--dynamically add paragraphy w/input content--></div>
+
+    <!--Exercise 6-->
+    <ul id="itemList"><!--dynamically insert li--></ul>
+
+    <script>
+        //EXERCISE 1:
+        // Use JavaScript to select the element with an ID of "myDiv" and change its background color to "lightblue". Select all the paragraph (<p>) elements on the page and log their inner text. 
+        
+        const mydiv = document.getElementById('myDiv');
+        mydiv.style.backgroundColor = "lightblue";
+
+        const paragraphs = document.querySelectorAll('p');
+        paragraphs.forEach((para)=> {
+            console.log(para.innerHTML)
+        })
+        
+        //EXERCISE 2:
+        // a. add a button with the class btn and btn_inline.
+
+        // b. Add an onclick event to this button that will call a JavaScript function named changeBackground().
+
+        // c. Within the same HTML file, create a <script> section. Inside this section, define the changeBackground() function. When executed, this function should change the background color of the document
+        
+        function changeBackground() {
+            document.body.style.backgroundColor = "red";
+        }
+
+        //EXERCISE 3:
+
+        // a.  Create at least three buttons with the class btn_onclick. Each button can have unique text like "Button 1", "Button 2", and so on.
+
+        // c. Inside the script element, use the querySelectorAll method to select all buttons with the class btn_onclick.
+
+        // e. Use the forEach method to loop over each button in the node list.
+
+        // f. For each button, add an onclick event that will change the document's background color when the button is clicked.
+
+        
+
+        // h. For an added challenge, assign a different color to each button so that when clicked, they change the background color to a unique hue.
+
+        // i. Test your code by opening multiple_buttons.html in a browser. Each button should change the background to a distinct color.
+
+        // g. Instead of setting a static color like #a7f3d0, make the color dynamic.
+
+        
+        const buttons = document.querySelectorAll('.btn_onclick');
+        buttons.forEach((button)=> {
+            button.onclick = function () {
+            //static colors
+
+              //document.body.style.background = '#a7f3d0';
+
+            //dynamic colors
+            const randomColor = Math.floor(Math.random() * 16777215).toString(16);
+
+             document.body.style.backgroundColor = `#${randomColor}`;
+            }
+            
+        })
+
+
+        //EXERCISE 4:
+
+        // a. Create a new button element with the text "Click Me".
+
+        // b. Append this button to the end of the body.
+
+        // c. Add an event listener to the button so that when it's clicked, it alerts the user with the message "Button was clicked!".
+
+        const parentDiv = document.querySelector('.addButton');
+        const btn = document.createElement('button');
+        btn.textContent = "Click Me"
+        btn.classList.add('btn-primary','btn-click','btn')
+        btn.addEventListener('click', alertFunction);
+        parentDiv.appendChild(btn);
+
+        function alertFunction() {
+            alert('button clicked')
+        }
+        
+
+        
+
+
+
+
+
+       
+
+
+
+        //EXERCISE 5:
+
+        // a. For the provided input element, add an event listener to log every keypress made by the user.
+
+        // b. Display the current content of the input in a separate paragraph below the input every time the user types.
+
+        //Grab input from html
+        //add div to Html and grab div code
+        //Create a paragraph element 
+        //Add an eventlistener to input that fires function on "keydown"
+        //append paragraph to div
+
+        const inputEl = document.querySelector('input');
+        const divThree = document.querySelector(".divThree");
+        const paragraph = document.createElement('paragraph');
+        console.log(inputEl.value)
+        paragraph.classList.add('inputText');
+        inputEl.addEventListener('input', function(){
+            console.log(inputEl.value)
+            paragraph.textContent = inputEl.value;
+
+        });
+        divThree.appendChild(paragraph)
+
+        
+
+        //EXERCISE 6:
+
+        // a. Loop through the provided list of items.
+
+        // b. For each item, create a new li element, set its text to the item's name, and append it to the provided ul.
+
+        // c. Ensure that the background color of every even item is "gray"
+        
+        
+        const items = [
+        {name: 'Item 1'},
+        {name: 'Item 2'},
+        {name: 'Item 3'},
+        {name: 'Item 4'}
+    ];
+
+    for(let item of items) {
+            const li = document.createElement('li');
+            const ul = document.getElementById('itemList');
+            const index = items.indexOf(item);
+            console.log(index)
+            li.textContent = item.name;
+            if(index % 2 === 0) {
+                li.style.backgroundColor = "grey"
+            }
+            ul.appendChild(li)
+        }
+
+
+    </script>
+</body>
+</html>
